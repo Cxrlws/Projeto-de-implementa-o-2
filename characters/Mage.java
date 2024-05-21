@@ -11,7 +11,6 @@ public class Mage extends Character {
         this.skillPower = 1;
         this.dodge = dodge;
     }
-
     /* Esse overfodase é pq to utilizando abstract na classe mãe, então ele me permite sobrescrever a função sem alterar na classe mãe */
     @Override
     public int attack() {
@@ -29,8 +28,19 @@ public class Mage extends Character {
     }
 
     @Override
-    public boolean showDetails() {
-        return true; //aqui deixei true pq é melhor deixar todos os prints dentro da main, então deixa como uma "permissão", onde se for true == pode printar as informações.
+    public void showDetails() {
+        System.out.printf("=========== MAGE %s ===========\n", getNome());
+        System.out.printf("# Nível --> %d\n", getLevel());
+        System.out.printf("# Força --> %d\n", getstrength());
+        System.out.printf("# Vidas --> %d\n", getlife());
+        System.out.printf("# Habilidade Mágica --> %d\n", getSkillPower());
+        System.out.printf("# Esquiva --> %d\n", getDodge());
+        System.out.printf("=====================================\n");
+    }
+
+    @Override
+    public void levelUp() {
+        setLevel(getLevel()+1);
     }
 
     public int getSkillPower() {
