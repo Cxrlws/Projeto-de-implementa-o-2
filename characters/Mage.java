@@ -6,12 +6,13 @@ public class Mage extends Character {
     private int dodgeChance;
     
 
-    public Mage(String nome, int dodge) {
+    public Mage(String nome) {
         super(nome);
         this.skillPower = 1;
-        this.dodge = dodge;
+        this.dodge = 40;
+        setLevel(1);
     }
-    /* Esse overfodase é pq to utilizando abstract na classe mãe, então ele me permite sobrescrever a função sem alterar na classe mãe */
+    
     @Override
     public int attack() {
         return skillPower * getstrength();
@@ -20,7 +21,7 @@ public class Mage extends Character {
     @Override
     public boolean recieveDamage(int damage) {
         dodgeChance = rowChance(); 
-        if(dodgeChance > dodge && getlife() > 0){//aqui ta sendo feito o calculo de probabilidade de esquiva...
+        if(dodgeChance > dodge && getlife() > 0){
             setlife(getlife() - damage);
             return true;
         } 
@@ -29,7 +30,7 @@ public class Mage extends Character {
 
     @Override
     public void showDetails() {
-        System.out.printf("=========== MAGE %s ===========\n", getNome());
+        System.out.printf("\n=========== MAGE %s ===========\n", getNome());
         System.out.printf("# Nível --> %d\n", getLevel());
         System.out.printf("# Força --> %d\n", getstrength());
         System.out.printf("# Vidas --> %d\n", getlife());
