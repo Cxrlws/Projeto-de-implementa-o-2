@@ -1,0 +1,62 @@
+package characters;
+import java.util.Random;
+
+public class Combat {
+    private int row;
+
+    Mage mage = new Mage("Belchior");
+    Warrior warrior = new Warrior("Sion");
+    Archer archer = new Archer("Ashe");
+
+    public Combat(){
+        Random chance = new Random();
+        row = chance.nextInt(2);
+    }
+
+    public Character getCombatente(int character){
+        switch(character) {
+            case 1:
+                return mage;
+            case 2:
+                return warrior;
+            case 3:
+                return archer;
+            default:
+                return null;
+        }
+    }
+
+    public String getWinner(Character winner){
+        return winner.getNome();
+    }
+
+    public Character combat(Character c1, Character c2){
+        if(c1.getLevel() > c2.getLevel()){
+            c1.levelUp();
+            c2.recieveDamage(c1.attack());
+            return c1;
+        }  
+        
+        if(c1.getLevel() == c2.getLevel()){
+            if(row == 0){
+                c1.levelUp();
+                c2.recieveDamage(c1.attack());
+                return c1;
+            }
+            c2.levelUp();
+            c1.recieveDamage(c2.attack());
+            return c2;
+        }
+        
+        if(c1.getLevel() < c2.getLevel()){
+            c2.levelUp();
+            c1.recieveDamage(c2.attack());
+            return c2;
+        }
+
+        return null;
+    }
+
+
+
+}
