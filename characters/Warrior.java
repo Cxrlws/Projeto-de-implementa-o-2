@@ -6,8 +6,9 @@ public class Warrior extends Character {
 
     public Warrior(String nome) {
         super(nome);
-        combatPoints = 1;
-        shield = 0;
+        combatPoints = 10;
+        shield = 20;
+        setLevel(1);
     }
 
     @Override
@@ -24,13 +25,17 @@ public class Warrior extends Character {
             }
             setlife((getlife() + shield) - damage);
             return true;
+        }else if(getlife() > 0){
+            
+            setlife(getlife() - damage);
+            return true;
         }
-        return false;
+        return false; 
     }
 
     @Override
     public void showDetails() {
-        System.out.printf("=========== WARRIOR %s ===========\n", getNome());
+        System.out.printf("\n=========== WARRIOR %s ===========\n", getNome());
         System.out.printf("# Nível --> %d\n", getLevel());
         System.out.printf("# Força --> %d\n", getstrength());
         System.out.printf("# Vidas --> %d\n", getlife());
