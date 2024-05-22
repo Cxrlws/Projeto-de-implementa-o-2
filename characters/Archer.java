@@ -6,8 +6,9 @@ public class Archer extends Character{
     
     public Archer(String nome) {
         super(nome);
-        bowSkill = 1;
-        dexterity = 1;
+        bowSkill = 10;
+        dexterity = 2;
+        setLevel(1);
     }
 
     @Override
@@ -26,7 +27,7 @@ public class Archer extends Character{
 
     @Override
     public void showDetails() {
-        System.out.printf("=========== MAGE %s ===========\n", getNome());
+        System.out.printf("\n=========== MAGE %s ===========\n", getNome());
         System.out.printf("# Nível --> %d\n", getLevel());
         System.out.printf("# Força --> %d\n", getstrength());
         System.out.printf("# Vidas --> %d\n", getlife());
