@@ -1,0 +1,70 @@
+import characters.*;
+
+import java.util.Scanner;
+
+public class main{
+    public static void main(String[] arg){
+        Mage defaultCharacter = new Mage("null");
+
+        Combat combat = new Combat();
+        Combat combatFirst = new Combat();
+        Combat combatSecond = new Combat();
+
+        Scanner input = new Scanner(System.in);
+
+        int firstCharacter;
+        int secondCharacter;
+        
+        String winner;
+
+        while(true){
+            System.out.println("====== REINO UFMA ======");
+            System.out.printf("1 - COMBATE\n" +
+            "2 - SAIR\n===================\n--> ");
+
+            int opc = input.nextInt();
+
+            switch (opc) {
+                case 1:
+                    System.out.print("\033[H\033[2J");
+                    System.out.println("========= SALA DE COMBATE ==========");
+                    System.out.println("=====> ESCOLHA OS COMBATENTES <=====");
+                    System.out.println("=====> 1 - MAGO ");
+                    System.out.println("=====> 2 - GUERREIRO ");
+                    System.out.println("=====> 3 - ARQUEIRO ");
+
+                    System.out.printf("\n=====> PRIMEIRO COMBATENTE: ");  
+                    firstCharacter = input.nextInt();
+
+                    System.out.printf("\n=====> SEGUNDO COMBATENTE: ");  
+                    secondCharacter = input.nextInt();
+
+                    System.out.print("\033[H\033[2J");
+                    System.out.println("========= RESULTADO DO COMBATE ==========");
+
+                    winner = combat.getWinner(combat.combat(combatFirst.getCombatente(firstCharacter), combatSecond.getCombatente(secondCharacter)));
+
+                    if(winner != null){
+                        System.out.printf("O(A) %s FOI VITORIOSO\n",winner);
+                        defaultCharacter.showDetails(combatFirst.getCombatente(firstCharacter), combatSecond.getCombatente(secondCharacter));
+                        break;
+                    }
+
+                    System.out.print("\033[H\033[2J");
+                    System.out.println("ESTE EMBATE SERIA IMPOSSIVEL!");
+                    break;
+                    
+                case 2:
+                    System.exit(1);
+
+                default:
+                    System.out.print("\033[H\033[2J");
+                    System.out.println("OPÇÃO INVALIDA, TENTE NOVAMENTE!!");
+                    break;
+            }
+
+
+
+        }
+    }
+}
