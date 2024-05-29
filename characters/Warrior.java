@@ -9,6 +9,7 @@ public class Warrior extends Character {
         combatPoints = 10;
         shield = 20;
         setLevel(1);
+        setstrength(5);
     }
 
     @Override
@@ -20,13 +21,18 @@ public class Warrior extends Character {
     public boolean recieveDamage(int damage) {
         if(shield > 0 && getlife() > 0){
             if (shield > damage){
-                shield -= damage;
+                setShield(shield -= damage);
                 return true;
             }
             setlife((getlife() + shield) - damage);
+            setShield(0);
             return true;
-        }else if(getlife() > 0){
             
+        }else if(getlife() > 0){
+            if(getlife() - damage <= 0){
+                setlife(0);
+                return true;
+            }
             setlife(getlife() - damage);
             return true;
         }
