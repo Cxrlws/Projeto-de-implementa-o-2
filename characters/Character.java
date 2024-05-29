@@ -12,23 +12,20 @@ public abstract class Character {
 
     public Character(String nome){  
         this.nome = nome;
-        this.strength = 0;
         this.life = 100;
     }
 
-    
     public abstract int attack();
     public abstract boolean recieveDamage(int damage);
     public abstract void levelUp();
-
-    public void showDetails(){}
+    
+    public abstract void showDetails();
     public void showDetails(Character p1, Character p2){
         p1.showDetails();
         p2.showDetails();
 
     }
     
-
     protected int rowChance() {
         row = chance.nextInt(101);
         return row;
