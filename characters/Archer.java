@@ -9,6 +9,7 @@ public class Archer extends Character{
         bowSkill = 10;
         dexterity = 2;
         setLevel(1);
+        setstrength(2);
     }
 
     @Override
@@ -19,6 +20,10 @@ public class Archer extends Character{
     @Override
     public boolean recieveDamage(int damage) {
         if(getlife() > 0) {
+            if(getlife() - damage <= 0) {
+                setlife(0);
+                return true;
+            }
             setlife(getlife() - damage);
             return true;
         }
@@ -27,7 +32,7 @@ public class Archer extends Character{
 
     @Override
     public void showDetails() {
-        System.out.printf("\n=========== MAGE %s ===========\n", getNome());
+        System.out.printf("\n=========== ARCHER %s ===========\n", getNome());
         System.out.printf("# Nível --> %d\n", getLevel());
         System.out.printf("# Força --> %d\n", getstrength());
         System.out.printf("# Vidas --> %d\n", getlife());
