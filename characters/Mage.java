@@ -8,9 +8,10 @@ public class Mage extends Character {
 
     public Mage(String nome) {
         super(nome);
-        this.skillPower = 1;
+        this.skillPower = 20;
         this.dodge = 40;
         setLevel(1);
+        setstrength(2);
     }
     
     @Override
@@ -22,6 +23,10 @@ public class Mage extends Character {
     public boolean recieveDamage(int damage) {
         dodgeChance = rowChance(); 
         if(dodgeChance > dodge && getlife() > 0){
+            if(getlife()-damage <= 0){
+                setlife(0);
+                return true;
+            }
             setlife(getlife() - damage);
             return true;
         } 
